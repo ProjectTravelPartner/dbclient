@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"time"
 
+	_ "github.com/go-sql-driver/mysql"
+
 	toml "github.com/pelletier/go-toml"
 )
 
