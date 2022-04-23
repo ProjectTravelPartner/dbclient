@@ -9,7 +9,7 @@ import (
 
 var dbGlobal *sql.DB
 
-func init() {
+func Init() {
 	const dbdetails = "conf/dbdetails.toml"
 	initialiseDB(dbdetails)
 }
