@@ -7,6 +7,11 @@ func Query(qry string, args ...interface{}) (*sql.Rows, error) {
 	return db.Query(qry, args...)
 }
 
+func QueryRow(qry string, args ...interface{}) *sql.Row {
+	db := GetDB()
+	return db.QueryRow(qry, args...)
+}
+
 func ExecGetID(qry string, args ...interface{}) (uint64, error) {
 	db := GetDB()
 	var err error
