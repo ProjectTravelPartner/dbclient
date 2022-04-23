@@ -28,15 +28,15 @@ func initialiseDB(dbdetails string) {
 	var db *sql.DB
 
 	if db, err = sql.Open(dbDriver, dbDatasource); err != nil {
-		fmt.Println( err)
+		fmt.Println(err)
 	}
-	for i := 0, i<10; i++ {
+	for i := 0; i < 10; i++ {
 		err := db.Ping()
 		if err == nil {
 			fmt.Println("DB ping success")
 			break
 		}
-		time.Sleep(5*time.Second)
+		time.Sleep(5 * time.Second)
 	}
 	dbGlobal = db
 }
