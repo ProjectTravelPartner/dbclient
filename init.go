@@ -3,6 +3,7 @@ package dbclient
 import (
 	"database/sql"
 	"fmt"
+	"time"
 
 	toml "github.com/pelletier/go-toml"
 )
@@ -27,7 +28,15 @@ func initialiseDB(dbdetails string) {
 	var db *sql.DB
 
 	if db, err = sql.Open(dbDriver, dbDatasource); err != nil {
-		fmt.Println("DB open failed")
+		fmt.Println( err)
+	}
+	for i := 0, i<10; i++ {
+		err := db.Ping()
+		if err == nil {
+			fmt.Println("DB ping success")
+			break
+		}
+		time.Sleep(5*time.Second)
 	}
 	dbGlobal = db
 }
